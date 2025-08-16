@@ -32,6 +32,12 @@ class Gaps {
   static const v72 = SizedBox(height: Sizes.size72);
   static const v80 = SizedBox(height: Sizes.size80);
   static const v96 = SizedBox(height: Sizes.size96);
+  static const v100 = SizedBox(height: Sizes.size100);
+  static const v120 = SizedBox(height: Sizes.size120);
+  static const v128 = SizedBox(height: Sizes.size128);
+  static const v144 = SizedBox(height: Sizes.size144);
+  static const v160 = SizedBox(height: Sizes.size160);
+  static const v180 = SizedBox(height: Sizes.size180);
 
   // Horizontal Gaps
 
@@ -64,4 +70,10 @@ class Gaps {
   static const h72 = SizedBox(width: Sizes.size72);
   static const h80 = SizedBox(width: Sizes.size80);
   static const h96 = SizedBox(width: Sizes.size96);
+  static const h100 = SizedBox(width: Sizes.size100);
+  static const h120 = SizedBox(width: Sizes.size120);
+  static const h128 = SizedBox(width: Sizes.size128);
+  static const h144 = SizedBox(width: Sizes.size144);
+  static const h160 = SizedBox(width: Sizes.size160);
+  static const h180 = SizedBox(width: Sizes.size180);
 }
