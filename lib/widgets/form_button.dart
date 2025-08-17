@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class FormButton extends StatelessWidget {
-  const FormButton({super.key, 
+  const FormButton(this.text, {super.key, 
     required this.disabled,
   });
-
+  final String text;
   final bool disabled;
 
   @override
@@ -26,7 +26,7 @@ class FormButton extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
           child: Text(
-            "Next",
+            text,
             textAlign: TextAlign.center,
           )
         )

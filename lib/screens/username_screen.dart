@@ -1,40 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:tik_tok/constants/gaps.dart';
-import 'package:tik_tok/features/authentication/widgets/form_button.dart';
+import 'package:tik_tok/screens/email_screen.dart';
+import 'package:tik_tok/widgets/form_button.dart';
 
 
-class EmailScreen extends StatefulWidget {
-  const EmailScreen({super.key});
+class UserNameScreen extends StatefulWidget {
+  const UserNameScreen({super.key});
 
   @override
-  State<EmailScreen> createState() => _EmailScreenState();
+  State<UserNameScreen> createState() => _UserNameScreenState();
 }
 
-class _EmailScreenState extends State<EmailScreen> {
+class _UserNameScreenState extends State<UserNameScreen> {
 
-  final TextEditingController _emailController = TextEditingController();
-  String _email = "";
+  final TextEditingController _usernameController = TextEditingController();
+  String _username = "";
   
-  String? isEmailValid() {
-    if(_email.isEmpty) return null;
-    final regExp = RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$");
-    if(!regExp.hasMatch(_email)) return "Email Not Valid";
-    return null;
+  void _onNextTab(BuildContext context) {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => EmailScreen(),
+        )
+      );
     }
-  
+
   @override
   void initState() {
     super.initState();
-    _emailController.addListener(() {
+    _usernameController.addListener(() {
       setState(() {
-        _email = _emailController.text;
+        _username = _usernameController.text;
       });
     });
   }
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _usernameController.dispose();
     super.dispose();
   }
 
@@ -52,13 +54,13 @@ class _EmailScreenState extends State<EmailScreen> {
           children: [
             Gaps.v36,
             const Text(
-              "Write your email",
+              "Create Username",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold
                 ),
             ),
-            Gaps.v6,
+            Gaps.v3,
             const Text(
               "You can always change it later.",
               textAlign: TextAlign.center,
@@ -69,26 +71,30 @@ class _EmailScreenState extends State<EmailScreen> {
             ),
             Gaps.v16,
             TextField(
-              keyboardType: TextInputType.emailAddress,
-              autocorrect: false,
-              cursorColor: Colors.pink,
-              controller: _emailController,
+              controller: _usernameController,
               decoration: InputDecoration(
-                errorText: isEmailValid(),
-                hintText: 'Email',
-                hintStyle: TextStyle(
-                  fontSize: 14,
-                ),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.pink),
                 ),
                 focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.pink),
                 ),
+                hintText: 'Username',
+                hintStyle: TextStyle(
+                  fontSize: 14,
+                ),
               ),
+              cursorColor: Colors.pink,
             ),
             Gaps.v24,
-            FormButton(disabled: _email.isEmpty),
+            GestureDetector(
+              onTap: () {
+                if (_username.isNotEmpty) {
+                  _onNextTab(context);
+                }
+              },
+              child: FormButton("Next", disabled: _username.isEmpty)
+              ),
           ],
         ),
       ),
